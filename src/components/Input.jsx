@@ -18,7 +18,7 @@ function EmailInput({ className, onChange }) {
     <input
       type="email"
       name="email"
-      placeholder="Correo Electronico"
+      placeholder="Correo Electrónico"
       className={className}
       onChange={onChange}
     />

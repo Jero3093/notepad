@@ -10,7 +10,7 @@ export default function LogIn() {
       <section className="w-full flex flex-col justify-center gap-12 self-center max-w-lg">
         <aside className="w-full">
           <h2 className="text-4xl font-semibold mb-10 text-[#183e50] dark:text-[#579ab5]">
-            Iniciar Sesion
+            Iniciar Sesión
           </h2>
 
           <LogInForm />
@@ -19,11 +19,11 @@ export default function LogIn() {
         <aside className="w-full flex flex-col items-center gap-4 text-black">
           <button className="bg-amber-300 w-full h-14 rounded-md shadow-sm flex flex-row gap-4 items-center justify-center text-xl">
             <FaGithub />
-            Iniciar Sesion con Github
+            Iniciar Sesión con Github
           </button>
           <button className="bg-amber-300 w-full h-14 rounded-md shadow-sm flex flex-row gap-4 items-center justify-center text-xl">
             <FaTwitch />
-            Iniciar Sesion con Twitch
+            Iniciar Sesión con Twitch
           </button>
         </aside>
       </section>

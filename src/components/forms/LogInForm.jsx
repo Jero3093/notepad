@@ -36,7 +36,7 @@ function LogInForm() {
       ) : (
         <input
           type="submit"
-          value="Iniciar Sesion"
+          value="Iniciar Sesión"
           className="w-full h-14 rounded-md grid place-items-center text-2xl text-white bg-[#183e50] cursor-pointer shadow-md"
         />
       )}
