@@ -1,32 +1,29 @@
-import { FaGithub, FaTwitch } from "react-icons/fa";
-import LogInForm from "@/components/forms/LogInForm";
+import Header from "@/components/Header";
+import Nav from "@/components/Nav";
+import NewNoteButton from "@/components/NewNoteButton";
 
-export default function LogIn() {
+export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col justify-center gap-12 text-pretty p-4">
-      <h1 className="text-[#46b3e6] text-5xl font-bold drop-shadow-sm self-center">
-        Notepad
-      </h1>
-      <section className="w-full flex flex-col justify-center gap-12 self-center max-w-lg">
-        <aside className="w-full">
-          <h2 className="text-4xl font-semibold mb-10 text-[#183e50] dark:text-[#579ab5]">
-            Iniciar Sesión
-          </h2>
+    <main className="flex flex-col h-screen">
+      <Header />
 
-          <LogInForm />
-        </aside>
+      <section className="h-full flex flex-col lg:flex-row">
+        <Nav />
 
-        <aside className="w-full flex flex-col items-center gap-4 text-black">
-          <button className="bg-amber-300 w-full h-14 rounded-md shadow-sm flex flex-row gap-4 items-center justify-center text-xl">
-            <FaGithub />
-            Iniciar Sesión con Github
-          </button>
-          <button className="bg-amber-300 w-full h-14 rounded-md shadow-sm flex flex-row gap-4 items-center justify-center text-xl">
-            <FaTwitch />
-            Iniciar Sesión con Twitch
-          </button>
+        <aside className="p-4 flex flex-col gap-3 text-pretty">
+          <h1 className="text-2xl font-medium">Lorem ipsum dolor sit amet.</h1>
+          <span className="text-zinc-600">
+            Creada el: <time datetime="2024/06/02">2024/06/02</time>
+          </span>
+          <p className="leading-loose mt-10 text-xl font-light">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt atque
+            alias delectus magnam sed, hic sequi necessitatibus culpa distinctio
+            excepturi quia quis beatae odio suscipit, ut eligendi totam
+            voluptates maxime?
+          </p>
         </aside>
       </section>
+      <NewNoteButton />
     </main>
   );
 }

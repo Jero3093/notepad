@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { IoSearch } from "react-icons/io5";
 
 function Input({ className, type, name, placeholder }) {
   return (
@@ -10,6 +11,25 @@ function Input({ className, type, name, placeholder }) {
       placeholder={placeholder}
       className={className}
     />
+  );
+}
+
+function SearchInput({ className, placeholder, mobile }) {
+  return (
+    <div
+      className={`flex-row items-center ${mobile ? "flex" : "hidden md:flex"}`}
+    >
+      <div className="h-10 w-10 grid place-items-center border-t-2 border-l-2 border-b-2 border-amber-300 rounded-tl-full rounded-bl-full">
+        <IoSearch className="text-amber-300 h-6 w-6" />
+      </div>
+      <input
+        type="search"
+        name="search"
+        id="search"
+        className={className}
+        placeholder={placeholder}
+      />
+    </div>
   );
 }
 
@@ -53,4 +73,4 @@ function PasswordInput({ className, onChange }) {
   );
 }
 
-export { Input, EmailInput, PasswordInput };
+export { Input, EmailInput, PasswordInput, SearchInput };

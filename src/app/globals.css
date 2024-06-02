@@ -7,3 +7,17 @@
   background: light #fff dark #202020;
   color: light black dark white;
 }
+
+/*--[Scrollbar Style]--*/
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5050505f;
+  border-radius: 8px;
+}
