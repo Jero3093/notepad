@@ -10,4 +10,15 @@ function checkSignUpInputs({ username, email, password }) {
   }
 }
 
-export { checkSignUpInputs };
+function checkLogInInputs({ email, password }) {
+  const checkEmail = email.length > 0 ? false : true;
+  const checkPassword = password.length > 0 ? false : true;
+
+  if (checkEmail && checkPassword) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export { checkSignUpInputs, checkLogInInputs };
