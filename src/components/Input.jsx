@@ -1,15 +1,17 @@
 "use client";
+
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 
-function Input({ className, type, name, placeholder }) {
+function Input({ className, type, name, placeholder, onChange }) {
   return (
     <input
       type={type}
       name={name}
       placeholder={placeholder}
       className={className}
+      onChange={onChange}
     />
   );
 }
