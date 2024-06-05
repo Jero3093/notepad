@@ -1,8 +1,14 @@
+import { redirect } from "next/navigation";
+import useSession from "@/hooks/useSession";
 import Header from "@/components/Header";
 import Nav from "@/components/Nav";
 import NewNoteButton from "@/components/NewNoteButton";
 
-export default function Home() {
+export default async function Home() {
+  const session = await useSession();
+
+  if (!session) redirect("/auth/signin");
+
   return (
     <main className="flex flex-col h-screen">
       <Header />

@@ -1,7 +1,13 @@
-import SignUpForm from "@/components/forms/SignUpForm";
+import { redirect } from "next/dist/server/api-utils";
+import useSession from "@/hooks/useSession";
 import { FaGithub, FaTwitch } from "react-icons/fa";
+import SignUpForm from "@/components/forms/SignUpForm";
 
-export default function SignUp() {
+export default async function SignUp() {
+  const session = await useSession();
+
+  if (session) redirect("/");
+
   return (
     <main className="min-h-screen flex flex-col justify-center gap-12 text-pretty p-4">
       <h1 className="text-[#46b3e6] text-5xl font-bold drop-shadow-sm self-center">
