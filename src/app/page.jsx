@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import useSession from "@/hooks/useSession";
 import Header from "@/components/Header";
 import Nav from "@/components/Nav";
@@ -16,17 +17,25 @@ export default async function Home() {
       <section className="h-full flex flex-col lg:flex-row">
         <Nav />
 
-        <aside className="p-4 flex flex-col gap-3 text-pretty">
-          <h1 className="text-2xl font-medium">Lorem ipsum dolor sit amet.</h1>
-          <span className="text-zinc-600">
-            Creada el: <time dateTime="2024/06/02">2024/06/02</time>
-          </span>
-          <p className="leading-loose mt-10 text-xl font-light">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt atque
-            alias delectus magnam sed, hic sequi necessitatibus culpa distinctio
-            excepturi quia quis beatae odio suscipit, ut eligendi totam
-            voluptates maxime?
-          </p>
+        <aside className="p-4 grid place-items-center text-pretty w-full h-full">
+          <section className="flex flex-col items-center gap-6">
+            <h1 className="text-3xl font-bold md:text-5xl">
+              Bienvenido a Notepad
+            </h1>
+            <p className="text-center leading-relaxed text-lg text-zinc-400">
+              Agrega nuevas notas haciendo click en el boton inferior.
+              <br />
+              Tus notas estaran guardadas con seguridad y podras acceder a ellas
+              desde cualquier dispositivo.
+            </p>
+            <Link
+              href={"/notes/create"}
+              title="Agregar Nueva Nota"
+              className="p-2 px-5 bg-sky-500 text-black rounded-md font-medium"
+            >
+              Agregar Nota
+            </Link>
+          </section>
         </aside>
       </section>
       <NewNoteButton />
