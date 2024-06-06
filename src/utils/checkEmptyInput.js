@@ -21,4 +21,15 @@ function checkLogInInputs({ email, password }) {
   }
 }
 
-export { checkSignUpInputs, checkLogInInputs };
+function checkNewNoteInputs({ title, content }) {
+  const checkTitle = title.length > 0 ? false : true;
+  const checkContent = content.length > 0 ? false : true;
+
+  if (checkTitle && checkContent) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export { checkSignUpInputs, checkLogInInputs, checkNewNoteInputs };
