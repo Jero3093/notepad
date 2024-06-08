@@ -35,7 +35,7 @@ function NewNoteForm({ userId }) {
 
       setTimeout(() => {
         router.replace("/");
-      }, 1000);
+      }, 2000);
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -70,7 +70,9 @@ function NewNoteForm({ userId }) {
       </label>
 
       {isLoading ? (
-        <Loader />
+        <div className="max-w-96 grid place-items-center">
+          <Loader />
+        </div>
       ) : (
         <input
           type="submit"
