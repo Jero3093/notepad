@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Nav from "@/components/Nav";
 import NewNoteForm from "@/components/forms/NewNoteForm";
 import useUser from "@/hooks/useUser";
+import useNotes from "@/hooks/useNotes";
 
 export default async function CreateNote() {
   const session = await useSession();
@@ -12,11 +13,13 @@ export default async function CreateNote() {
 
   const user = await useUser({ session });
 
+  const notes = await useNotes({ userId: user[0]?.id });
+
   return (
     <main className="flex flex-col h-screen">
       <Header />
       <section className="h-full flex flex-col lg:flex-row">
-        <Nav />
+        <Nav notes={notes} />
 
         <aside className="p-4 flex flex-col items-start gap-6 text-pretty w-full h-full">
           <h1 className="text-amber-300 text-3xl font-semibold">Nueva Nota</h1>
