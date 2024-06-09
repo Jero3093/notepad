@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { SearchInput } from "./Input";
 import { IoSearch, IoMenuOutline } from "react-icons/io5";
+import Link from "next/link";
 
 function Header() {
   const [showInput, setShowInput] = useState(false);
@@ -26,7 +27,9 @@ function Header() {
           <IoMenuOutline className="w-10 h-10 text-amber-300" />
         </button>
 
-        <h1 className="text-3xl text-[#46b3e6] font-semibold">Notepad</h1>
+        <Link href={"/"} title="Pagina Principal">
+          <h1 className="text-3xl text-[#46b3e6] font-semibold">Notepad</h1>
+        </Link>
 
         <button className="md:hidden" onClick={() => setShowInput(!showInput)}>
           <IoSearch className="w-7 h-7 text-amber-300" />
