@@ -32,10 +32,13 @@ export default async function Note({ params }) {
             <h3 className="text-4xl mb-5 font-semibold">
               Error <span className="text-red-500">404</span>
             </h3>
-            <span className="text-zinc-500">La nota que ustedes esta buscando no existe.</span>
+            <span className="text-zinc-500">
+              La nota que ustedes esta buscando no existe.
+            </span>
           </article>
         ) : (
           <NoteView
+            id={note?.id}
             title={note?.title}
             content={note?.content}
             created_at={note?.created_at}
