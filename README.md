@@ -58,10 +58,6 @@ Notepad es una aplicación de toma de notas sencilla y eficiente diseñada para 
 4. Sube tus cambios (`git push origin feature/nueva-caracteristica`).
 5. Abre un Pull Request.
 
-## Licencia
-
-Este proyecto está bajo una licencia personalizada. Consulta el archivo [LICENSE](LICENSE) para obtener más información.
-
 ## Contacto
 
 Para cualquier duda o sugerencia, puedes contactarme en [jerotornini@outlook.com](mailto:jerotornini@outlook.com).
