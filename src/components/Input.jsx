@@ -4,11 +4,12 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 
-function Input({ className, type, name, placeholder, onChange }) {
+function Input({ className, type, name, placeholder, onChange, value }) {
   return (
     <input
       type={type}
       name={name}
+      value={value}
       placeholder={placeholder}
       className={className}
       onChange={onChange}
