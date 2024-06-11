@@ -1,13 +1,8 @@
 "use client";
-
-import { useState } from "react";
-import { SearchInput } from "./Input";
-import { IoSearch, IoMenuOutline } from "react-icons/io5";
+import { IoMenuOutline, IoSettingsSharp } from "react-icons/io5";
 import Link from "next/link";
 
 function Header() {
-  const [showInput, setShowInput] = useState(false);
-
   const handleShowNav = () => {
     const nav = document.getElementById("nav");
 
@@ -23,32 +18,18 @@ function Header() {
   return (
     <>
       <header className="flex flex-row items-center justify-between p-4 border-b border-zinc-300 dark:border-zinc-800">
-        <button onClick={() => handleShowNav()}>
-          <IoMenuOutline className="w-10 h-10 text-amber-300" />
+        <button onClick={() => handleShowNav()} title="Menu">
+          <IoMenuOutline className="w-10 h-10 text-zinc-700 dark:text-zinc-200" />
         </button>
 
         <Link href={"/"} title="Pagina Principal">
-          <h1 className="text-3xl text-[#46b3e6] font-semibold">Notepad</h1>
+          <h1 className="text-3xl text-sky-600 font-semibold dark:text-sky-400">Notepad</h1>
         </Link>
 
-        <button className="md:hidden" onClick={() => setShowInput(!showInput)}>
-          <IoSearch className="w-7 h-7 text-amber-300" />
-        </button>
-
-        <SearchInput
-          className="max-w-96 p-2 h-10 border-t-2 border-r-2 border-b-2 rounded-tr-full rounded-br-full border-amber-300 outline-none"
-          placeholder="Buscar nota"
-        />
+        <Link href={"/settings"} title="Ajustes">
+          <IoSettingsSharp className="w-7 h-7 text-zinc-700 dark:text-zinc-300" />
+        </Link>
       </header>
-      {showInput && (
-        <div className="mx-3 mt-3">
-          <SearchInput
-            className="w-full max-w-96 p-2 h-10 border-t-2 border-r-2 border-b-2 rounded-tr-full rounded-br-full border-amber-300 outline-none"
-            placeholder="Buscar nota"
-            mobile={true}
-          />
-        </div>
-      )}
     </>
   );
 }

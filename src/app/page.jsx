@@ -37,7 +37,7 @@ export default async function Home() {
             <Link
               href={"/notes/create"}
               title="Agregar Nueva Nota"
-              className="p-2 px-5 bg-sky-500 text-black rounded-md font-medium"
+              className="p-2 px-7 bg-sky-500 text-black rounded-md text-lg font-medium"
             >
               Agregar Nota
             </Link>

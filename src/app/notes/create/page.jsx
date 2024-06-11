@@ -22,7 +22,9 @@ export default async function CreateNote() {
         <Nav notes={notes} />
 
         <aside className="p-4 flex flex-col items-start gap-6 text-pretty w-full h-full">
-          <h1 className="text-amber-300 text-3xl font-semibold">Nueva Nota</h1>
+          <h1 className="text-sky-500 dark:text-sky-300 text-3xl font-semibold">
+            Nueva Nota
+          </h1>
           <p className="text-zinc-400 text-lg">
             Completa todos los campos para crear una nota.
           </p>

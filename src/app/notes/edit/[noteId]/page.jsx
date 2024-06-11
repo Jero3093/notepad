@@ -9,13 +9,14 @@ import useNotes from "@/hooks/useNotes";
 export default async function EditNote({ params }) {
   const session = await useSession();
 
-  if (!session) redirect("/auth/signin");
+  const noteId = params?.noteId;
+
+  if (!session || noteId.length === 0)
+    redirect(noteId.length === 0 ? "/" : "/auth/signin");
 
   const user = await useUser({ session });
 
   const notes = await useNotes({ userId: user[0]?.id });
-
-  const noteId = params?.noteId;
 
   const note = notes.length > 0 && notes.find((n) => n?.id === noteId);
 
@@ -26,13 +27,11 @@ export default async function EditNote({ params }) {
         <Nav notes={notes} />
 
         <aside className="p-4 flex flex-col items-start gap-6 text-pretty w-full h-full">
-          <h1 className="text-amber-300 text-3xl font-semibold">
-            {noteId ? "Editar Nota" : "Nueva Nota"}
+          <h1 className="text-sky-500 dark:text-sky-300 text-3xl font-semibold">
+            Editar Nota
           </h1>
           <p className="text-zinc-400 text-lg">
-            {noteId
-              ? "Haz los cambios que quieras sin dejar los campos vacíos."
-              : "Completa todos los campos para crear una nota."}
+            Haz los cambios que quieras sin dejar los campos vacíos.
           </p>
           <NewNoteForm
             userId={user[0]?.id}

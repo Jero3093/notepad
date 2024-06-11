@@ -20,16 +20,14 @@ function Input({ className, type, name, placeholder, onChange, value }) {
 function SearchInput({ className, placeholder, mobile }) {
   return (
     <div
-      className={`flex-row items-center ${mobile ? "flex" : "hidden md:flex"}`}
+      className={`flex flex-row items-center border-2 border-zinc-700 dark:border-zinc-200 pl-2 rounded-md`}
     >
-      <div className="h-10 w-10 grid place-items-center border-t-2 border-l-2 border-b-2 border-amber-300 rounded-tl-full rounded-bl-full">
-        <IoSearch className="text-amber-300 h-6 w-6" />
-      </div>
+      <IoSearch className="text-zinc-700 dark:text-zinc-200 h-6 w-6" />
       <input
         type="search"
         name="search"
         id="search"
-        className={className}
+        className="max-w-96 p-2 h-10 outline-none"
         placeholder={placeholder}
       />
     </div>
@@ -51,7 +49,7 @@ function EmailInput({ className, onChange }) {
 function PasswordInput({ className, onChange }) {
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <div className="flex flex-row items-center">
+    <div className="flex flex-row items-center border-t-[2px] border-l-[3px] border-r-[3px] border-b-[3px] rounded-b-md overflow-hidden border-zinc-700 dark:border-zinc-300 pr-2">
       <input
         type={showPassword ? "text" : "password"}
         name="password"
@@ -59,19 +57,17 @@ function PasswordInput({ className, onChange }) {
         className={className}
         onChange={onChange}
       />
-      <div className="h-14 w-10 p-2 border-t-[2px] border-r-[3px] border-b-[3px] border-t-yellow-400 border-r-yellow-400 border-b-yellow-400  bg-transparent rounded-br-md flex">
-        {showPassword ? (
-          <FaEyeSlash
-            className="self-center cursor-pointer dark:text-white"
-            onClick={() => setShowPassword(!showPassword)}
-          />
-        ) : (
-          <FaEye
-            className="self-center cursor-pointer dark:text-white"
-            onClick={() => setShowPassword(!showPassword)}
-          />
-        )}
-      </div>
+      {showPassword ? (
+        <FaEyeSlash
+          className="self-center cursor-pointer dark:text-white"
+          onClick={() => setShowPassword(!showPassword)}
+        />
+      ) : (
+        <FaEye
+          className="self-center cursor-pointer dark:text-white"
+          onClick={() => setShowPassword(!showPassword)}
+        />
+      )}
     </div>
   );
 }

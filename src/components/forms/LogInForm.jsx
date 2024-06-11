@@ -54,11 +54,11 @@ function LogInForm() {
     >
       <div>
         <EmailInput
-          className="w-full h-14 rounded-t-md border-amber-300 border-t-[3px] border-l-[3px] border-r-[3px] border-b-[2px] p-2 placeholder:text-xl outline-none"
+          className="w-full h-14 rounded-t-md border-zinc-700 dark:border-zinc-300 border-t-[3px] border-l-[3px] border-r-[3px] border-b-[2px] p-2 placeholder:text-xl outline-none"
           onChange={(t) => setEmail(t.target.value)}
         />
         <PasswordInput
-          className="w-full h-14 rounded-bl-md border-amber-300 border-t-[2px] border-l-[3px] border-b-[3px] p-2 placeholder:text-xl outline-none"
+          className="w-full h-14 p-2 placeholder:text-xl outline-none"
           onChange={(t) => setPassword(t.target.value)}
         />
       </div>
@@ -66,7 +66,7 @@ function LogInForm() {
         Si no tienes una cuenta,{" "}
         <Link
           href={"/auth/signup"}
-          className="font-bold text-[#183e50] cursor-pointer dark:text-[#579ab5]"
+          className="font-semibold text-sky-800 cursor-pointer dark:text-sky-500"
         >
           Crear Cuenta
         </Link>
@@ -77,7 +77,7 @@ function LogInForm() {
         <input
           type="submit"
           value="Iniciar Sesión"
-          className="w-full h-14 rounded-md grid place-items-center text-2xl text-white bg-[#183e50] cursor-pointer shadow-md"
+          className="w-full h-14 rounded-md grid place-items-center text-2xl text-white bg-sky-950 cursor-pointer shadow-md"
         />
       )}
     </form>

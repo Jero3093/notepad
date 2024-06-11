@@ -41,14 +41,12 @@ function SignUpForm() {
 
         await saveSession({ session });
 
-        const { error: userError } = await supabaseClient
-          .from("users")
-          .insert([
-            {
-              username: username,
-              email: email,
-            },
-          ]);
+        const { error: userError } = await supabaseClient.from("users").insert([
+          {
+            username: username,
+            email: email,
+          },
+        ]);
 
         if (!userError) {
           setTimeout(() => {
@@ -78,14 +76,14 @@ function SignUpForm() {
           type={"text"}
           placeholder={"Nombre de Usuario"}
           onChange={(t) => setUsername(t.target.value)}
-          className="w-full h-14 rounded-t-md border-amber-300 border-t-[3px] border-l-[3px] border-r-[3px] border-b-[2px] p-2 placeholder:text-xl outline-none"
+          className="w-full h-14 rounded-t-md border-zinc-700 dark:border-zinc-300 border-t-[3px] border-l-[3px] border-r-[3px] border-b-[2px] p-2 placeholder:text-xl outline-none"
         />
         <EmailInput
-          className="w-full h-14 border-amber-300 border-t-[2px] border-l-[3px] border-r-[3px] border-b-[2px] p-2 placeholder:text-xl outline-none"
+          className="w-full h-14 border-zinc-700 dark:border-zinc-300 border-t-[2px] border-l-[3px] border-r-[3px] border-b-[2px] p-2 placeholder:text-xl outline-none"
           onChange={(t) => setEmail(t.target.value)}
         />
         <PasswordInput
-          className="w-full h-14 rounded-bl-md border-amber-300 border-t-[2px] border-l-[3px] border-b-[3px] p-2 placeholder:text-xl outline-none"
+          className="w-full h-14 rounded-bl-md border-zinc-700 dark:border-zinc-300 p-2 placeholder:text-xl outline-none"
           onChange={(t) => setPassword(t.target.value)}
         />
       </div>
@@ -93,7 +91,7 @@ function SignUpForm() {
         Si ya tienes una cuenta,{" "}
         <Link
           href={"/"}
-          className="font-bold text-[#183e50] cursor-pointer dark:text-[#579ab5]"
+          className="font-semibold text-sky-800 cursor-pointer dark:text-sky-500"
         >
           Iniciar Sesión
         </Link>
