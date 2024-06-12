@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import useSession from "@/hooks/useSession";
 import { FaGithub, FaTwitch } from "react-icons/fa";
+import { Toaster } from "sonner";
 import LogInForm from "@/components/forms/LogInForm";
 
 export default async function LogIn() {
@@ -10,6 +11,7 @@ export default async function LogIn() {
 
   return (
     <main className="min-h-screen flex flex-col justify-center gap-12 text-pretty p-4">
+      <Toaster position="top-center" richColors />
       <h1 className="text-sky-500 dark:text-sky-400 text-5xl font-bold drop-shadow-sm self-center">
         Notepad
       </h1>

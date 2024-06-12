@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { Toaster } from "sonner";
 import useSession from "@/hooks/useSession";
 import useUser from "@/hooks/useUser";
 import useNotes from "@/hooks/useNotes";
@@ -22,6 +23,8 @@ export default async function Note({ params }) {
 
   return (
     <main className="flex flex-col h-screen">
+      <Toaster position="top-center" richColors />
+
       <Header />
 
       <section className="h-full flex flex-col lg:flex-row">

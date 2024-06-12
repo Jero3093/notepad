@@ -6,6 +6,7 @@ import { Input } from "../Input";
 import { checkNewNoteInputs } from "@/utils/checkEmptyInput";
 import supabaseClient from "@/utils/supabase/client";
 import Loader from "../Loader";
+import { toast } from "sonner";
 
 function NewNoteForm({ userId, noteId, noteTitle, noteContent }) {
   const [title, setTitle] = useState(noteTitle ? noteTitle : "");
@@ -21,7 +22,10 @@ function NewNoteForm({ userId, noteId, noteTitle, noteContent }) {
 
       const emptyInputs = checkNewNoteInputs({ title, content });
 
-      if (emptyInputs) return;
+      if (emptyInputs)
+        return toast.warning(
+          "Para crear un nota debe de llenar todos los campos"
+        );
 
       const { error } = await supabaseClient.from("notes").insert([
         {
@@ -31,8 +35,12 @@ function NewNoteForm({ userId, noteId, noteTitle, noteContent }) {
         },
       ]);
 
-      if (error) return console.log(error.message);
+      if (error)
+        return toast.error(
+          "Un error ocurrio al intentar guardar la nota, intente luego"
+        );
 
+      toast.success("Nota creada con exito");
       setTimeout(() => {
         router.replace("/");
       }, 2000);
@@ -50,7 +58,10 @@ function NewNoteForm({ userId, noteId, noteTitle, noteContent }) {
 
       const emptyInputs = checkNewNoteInputs({ title, content });
 
-      if (emptyInputs) return;
+      if (emptyInputs)
+        return toast.warning(
+          "No puedes dejar ningun campo vacio al editar la nota"
+        );
 
       const { error } = await supabaseClient
         .from("notes")
@@ -60,7 +71,12 @@ function NewNoteForm({ userId, noteId, noteTitle, noteContent }) {
         })
         .eq("id", noteId);
 
-      if (error) return console.log(error.message);
+      if (error)
+        return toast.error(
+          "Un error ocurrio al intentar editar la nota, intente luego"
+        );
+
+      toast.success("Nota editada con exito");
 
       setTimeout(() => {
         router.replace(`/notes/${noteId}`);

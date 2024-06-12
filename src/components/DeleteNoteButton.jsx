@@ -3,9 +3,20 @@
 import { useRouter } from "next/navigation";
 import supabaseClient from "@/utils/supabase/client";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { toast } from "sonner";
 
 function DeleteNoteButton({ noteId }) {
   const router = useRouter();
+
+  const showAlert = () => {
+    toast("Seguro quieres borrar la nota?", {
+      action: {
+        label: "Borrar",
+        onClick: () => handleDeleteNote(),
+      },
+      duration: 3000,
+    });
+  };
 
   const handleDeleteNote = async () => {
     try {
@@ -14,7 +25,12 @@ function DeleteNoteButton({ noteId }) {
         .delete()
         .eq("id", noteId);
 
-      if (error) return console.log(error.message);
+      if (error)
+        return toast.error(
+          "Un error ocurrio al intentar borrar la nota, intente luego"
+        );
+
+      toast.success("La nota fue borrada exitosamente");
 
       setTimeout(() => {
         router.replace("/");
@@ -28,7 +44,7 @@ function DeleteNoteButton({ noteId }) {
     <button
       className="p-2 px-5 rounded-md border-2 border-red-500 text-red-500 bg-transparent"
       title="Borrar Nota"
-      onClick={() => handleDeleteNote()}
+      onClick={() => showAlert()}
     >
       <RiDeleteBinLine className="w-6 h-6" />
     </button>

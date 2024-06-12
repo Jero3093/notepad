@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { toast } from "sonner";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import saveSession from "@/lib/saveSession";
 import supabaseClient from "@/utils/supabase/client";
 import Loader from "../Loader";
 import { EmailInput, PasswordInput, Input } from "../Input";
 import { checkSignUpInputs } from "@/utils/checkEmptyInput";
-import { useRouter } from "next/navigation";
 
 function SignUpForm() {
   const [username, setUsername] = useState("");
@@ -28,7 +29,10 @@ function SignUpForm() {
         password,
       });
 
-      if (emptyInputs) return;
+      if (emptyInputs)
+        return toast.warning(
+          "Para crear una cuenta debe de llenar todos los campos"
+        );
 
       const { data: authData, error: authError } =
         await supabaseClient.auth.signUp({
@@ -49,10 +53,15 @@ function SignUpForm() {
         ]);
 
         if (!userError) {
+          toast.success(
+            "Su cuenta se creo correctamente, redirigiendo a pagina principal"
+          );
+
           setTimeout(() => {
             router.replace("/");
           }, 1000);
         } else {
+          toast.error("Un error ocurrio al crear su cuenta, intente luego");
           console.log(userError.details);
         }
       } else {

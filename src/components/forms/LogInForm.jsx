@@ -8,6 +8,7 @@ import supabaseClient from "@/utils/supabase/client";
 import { checkLogInInputs } from "@/utils/checkEmptyInput";
 import Loader from "../Loader";
 import { EmailInput, PasswordInput } from "../Input";
+import { toast } from "sonner";
 
 function LogInForm() {
   const [email, setEmail] = useState("");
@@ -23,7 +24,10 @@ function LogInForm() {
 
       const emptyInputs = checkLogInInputs({ email, password });
 
-      if (emptyInputs) return;
+      if (emptyInputs)
+        return toast.warning(
+          "Para iniciar sesión debe rellenar todos los campos"
+        );
 
       const { data, error } = await supabaseClient.auth.signInWithPassword({
         email: email,
@@ -34,10 +38,17 @@ function LogInForm() {
         const session = data?.session;
         await saveSession({ session });
 
+        toast.success(
+          "Sesión iniciada correctamente, redirigiendo a pagina principal"
+        );
+
         setTimeout(() => {
           router.replace("/");
         }, 1000);
       } else {
+        toast.error(
+          "Un error ocurrio durante el inicio de sesión, intente luego"
+        );
         console.log(error.message);
       }
     } catch (error) {

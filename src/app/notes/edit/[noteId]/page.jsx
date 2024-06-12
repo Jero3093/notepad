@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { Toaster } from "sonner";
 import useSession from "@/hooks/useSession";
 import Header from "@/components/Header";
 import Nav from "@/components/Nav";
@@ -22,6 +23,7 @@ export default async function EditNote({ params }) {
 
   return (
     <main className="flex flex-col h-screen">
+      <Toaster position="top-center" richColors />
       <Header />
       <section className="h-full flex flex-col lg:flex-row">
         <Nav notes={notes} />
