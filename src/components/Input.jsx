@@ -17,7 +17,7 @@ function Input({ className, type, name, placeholder, onChange, value }) {
   );
 }
 
-function SearchInput({ placeholder }) {
+function SearchInput({ placeholder, onChange }) {
   return (
     <div
       className={`flex flex-row items-center border-2 border-zinc-700 dark:border-zinc-200 pl-2 rounded-md`}
@@ -29,6 +29,7 @@ function SearchInput({ placeholder }) {
         id="search"
         className="w-full p-2 h-10 outline-none rounded-r-md"
         placeholder={placeholder}
+        onChange={onChange}
       />
     </div>
   );

@@ -5,7 +5,7 @@ const NoteView = ({ id, title, content, created_at }) => {
   const created_date = created_at && created_at.substring(0, 10);
 
   return (
-    <aside className="p-4 flex flex-col gap-3 text-pretty w-full h-full">
+    <aside className="p-4 flex flex-col gap-3 text-pretty w-full lg:h-full">
       <header className="flex flex-row justify-between items-center">
         <aside className="flex flex-col gap-3">
           <h1 className="text-2xl font-medium md:text-3xl">{title}.</h1>
