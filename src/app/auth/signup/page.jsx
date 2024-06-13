@@ -1,4 +1,5 @@
 import { redirect } from "next/dist/server/api-utils";
+import { Toaster } from "sonner";
 import useSession from "@/hooks/useSession";
 import { FaGithub, FaTwitch } from "react-icons/fa";
 import SignUpForm from "@/components/forms/SignUpForm";
