@@ -3,52 +3,56 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { FaTwitch } from "react-icons/fa";
-import useHashParams from "@/hooks/useHashParams";
-import GithubButton from "./GithubButton";
 import saveSession from "@/lib/saveSession";
+import GithubButton from "./GithubButton";
+import TwitchButton from "./TwitchButton";
 
 function OAuthButtons() {
-  const hashParams = useHashParams();
-
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const saveHashParams = async () => {
-      if (hashParams !== null) {
-        setIsLoading(true);
+      const hash = window.location.hash;
 
-        const session = {
-          access_token: hashParams.access_token,
-          refresh_token: hashParams.refresh_token,
-        };
+      if (hash === "") return;
 
-        const res = await saveSession({ session });
+      setIsLoading(true);
 
-        if (res.ok) {
-          setIsLoading(false);
-          router.replace("/");
-        } else {
-          setIsLoading(false);
-          toast.error(
-            "Ocurrio un error al autenticar su cuenta, intente luego"
-          );
-        }
+      const hashParams = hash.substring(1);
+
+      const paramsArray = hashParams.split("&");
+
+      const params = {};
+      paramsArray.forEach((param) => {
+        const [key, value] = param.split("=");
+        params[key] = decodeURIComponent(value);
+      });
+
+      const session = {
+        access_token: params.access_token,
+        refresh_token: params.refresh_token,
+      };
+
+      const res = await saveSession({ session });
+
+      if (res.ok) {
+        setIsLoading(false);
+        router.replace("/");
+      } else {
+        setIsLoading(false);
+        toast.error("Ocurrio un error al autenticar su cuenta, intente luego");
       }
     };
 
     saveHashParams();
-  }, []);
+  }, [router]);
 
   return (
     <aside className="w-full flex flex-col items-center gap-4 text-black">
       <GithubButton isLoading={isLoading} />
-      <button className="bg-sky-300 w-full h-14 rounded-md shadow-sm flex flex-row gap-4 items-center justify-center text-xl">
-        <FaTwitch />
-        Iniciar Sesión con Twitch
-      </button>
+      <TwitchButton isLoading={isLoading} />
     </aside>
   );
 }
