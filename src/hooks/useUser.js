@@ -2,6 +2,19 @@ import supabaseClient from "@/utils/supabase/client";
 
 async function useUser({ session }) {
   try {
+    if (session.username) {
+      const oAuthUser = [
+        {
+          id: session.id,
+          email: session.email,
+          username: session.username,
+          created_at: session.created_at,
+        },
+      ];
+
+      return oAuthUser;
+    }
+
     const email = session?.email;
 
     if (email) {

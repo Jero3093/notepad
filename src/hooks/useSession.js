@@ -30,6 +30,24 @@ async function useSession() {
         console.log(error.message);
       }
     } else if (supabaseSession.session) {
+      const supabaseUser = supabaseSession.session.user;
+
+      if (
+        supabaseUser.app_metadata.provider === "twitch" ||
+        supabaseUser.app_metadata.provider === "github"
+      ) {
+        const oAuthSession = {
+          access_token: supabaseSession.session.access_token,
+          refresh_token: supabaseSession.session.refresh_token,
+          email: supabaseSession.session.user.email,
+          id: supabaseSession.session.user.id,
+          username: supabaseSession.session.user.user_metadata?.user_name,
+          created_at: supabaseUser.created_at,
+        };
+
+        return oAuthSession;
+      }
+
       const formatedSupabaseSession = {
         access_token: supabaseSession.session.access_token,
         refresh_token: supabaseSession.session.refresh_token,
