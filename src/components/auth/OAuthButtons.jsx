@@ -7,7 +7,7 @@ import saveSession from "@/lib/saveSession";
 import GithubButton from "./GithubButton";
 import TwitchButton from "./TwitchButton";
 
-function OAuthButtons() {
+function OAuthButtons({ signUp }) {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -39,6 +39,7 @@ function OAuthButtons() {
 
       if (res.ok) {
         setIsLoading(false);
+        router.refresh();
         router.replace("/");
       } else {
         setIsLoading(false);
@@ -51,8 +52,8 @@ function OAuthButtons() {
 
   return (
     <aside className="w-full flex flex-col items-center gap-4 text-black">
-      <GithubButton isLoading={isLoading} />
-      <TwitchButton isLoading={isLoading} />
+      <GithubButton isLoading={isLoading} signUp={signUp} />
+      <TwitchButton isLoading={isLoading} signUp={signUp} />
     </aside>
   );
 }

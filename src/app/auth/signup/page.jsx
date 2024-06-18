@@ -1,8 +1,8 @@
 import { redirect } from "next/dist/server/api-utils";
 import { Toaster } from "sonner";
 import useSession from "@/hooks/useSession";
-import { FaGithub, FaTwitch } from "react-icons/fa";
 import SignUpForm from "@/components/forms/SignUpForm";
+import OAuthButtons from "@/components/auth/OAuthButtons";
 
 export default async function SignUp() {
   const session = await useSession();
@@ -24,16 +24,7 @@ export default async function SignUp() {
           <SignUpForm />
         </aside>
 
-        <aside className="w-full flex flex-col items-center gap-4 text-black">
-          <button className="bg-sky-300 w-full h-14 rounded-md shadow-sm flex flex-row gap-4 items-center justify-center text-xl">
-            <FaGithub />
-            Crear Cuenta con Github
-          </button>
-          <button className="bg-sky-300 w-full h-14 rounded-md shadow-sm flex flex-row gap-4 items-center justify-center text-xl">
-            <FaTwitch />
-            Crear Cuenta con Twitch
-          </button>
-        </aside>
+        <OAuthButtons signUp={true} />
       </section>
     </main>
   );

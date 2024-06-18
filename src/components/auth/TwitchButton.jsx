@@ -5,7 +5,7 @@ import { FaTwitch } from "react-icons/fa";
 import supabaseClient from "@/utils/supabase/client";
 import Loader from "../Loader";
 
-function TwitchButton({ isLoading }) {
+function TwitchButton({ isLoading, signUp }) {
   const handleSignInWithTwitch = async () => {
     try {
       const { error } = await supabaseClient.auth.signInWithOAuth({
@@ -37,7 +37,7 @@ function TwitchButton({ isLoading }) {
           onClick={() => handleSignInWithTwitch()}
         >
           <FaTwitch />
-          Iniciar Sesión con Twitch
+          {signUp ? "Crear Cuenta con Twitch" : "Iniciar Sesión con Twitch"}
         </button>
       )}
     </>

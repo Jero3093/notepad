@@ -5,7 +5,7 @@ import { FaGithub } from "react-icons/fa";
 import supabaseClient from "@/utils/supabase/client";
 import Loader from "../Loader";
 
-function GithubButton({ isLoading }) {
+function GithubButton({ isLoading, signUp }) {
   const handleSignInWithGithub = async () => {
     try {
       const { error } = await supabaseClient.auth.signInWithOAuth({
@@ -34,7 +34,7 @@ function GithubButton({ isLoading }) {
           onClick={() => handleSignInWithGithub()}
         >
           <FaGithub />
-          Iniciar Sesión con Github
+          {signUp ? "Crear Cuenta con Github" : "Iniciar Sesión con Github"}
         </button>
       )}
     </>
