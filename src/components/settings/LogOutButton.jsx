@@ -39,6 +39,7 @@ function LogOutButton() {
     <button
       className="w-96 h-12 rounded-md flex flex-row justify-between items-center py-6 px-4 bg-transparent border-[3px] text-lg border-red-500 text-red-500"
       onClick={() => handleSignOut()}
+      title="Cerrar Sesión"
     >
       {isLoading && (
         <div className="self-center">
