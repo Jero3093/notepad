@@ -27,7 +27,7 @@ export default async function CreateNote() {
           <h1 className="text-sky-500 dark:text-sky-300 text-3xl font-semibold">
             Nueva Nota
           </h1>
-          <p className="text-zinc-400 text-lg">
+          <p className="text-zinc-500 text-lg">
             Completa todos los campos para crear una nota.
           </p>
           <NewNoteForm userId={user[0]?.id} />

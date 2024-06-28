@@ -101,7 +101,7 @@ function NewNoteForm({ userId, noteId, noteTitle, noteContent }) {
           placeholder="Titulo de la Nota"
           value={title}
           onChange={(t) => setTitle(t.target.value)}
-          className="w-full max-w-2xl h-14 rounded-md border-2 border-zinc-600 p-2 outline-none lg:max-w-4xl"
+          className="w-full max-w-2xl h-14 rounded-md border-2 border-zinc-700 shadow-md shadow-zinc-700 placeholder:text-zinc-600 p-2 outline-none lg:max-w-4xl"
         />
       </label>
 
@@ -112,7 +112,7 @@ function NewNoteForm({ userId, noteId, noteTitle, noteContent }) {
           placeholder="Contenido de la Nota"
           value={content}
           onChange={(t) => setContent(t.target.value)}
-          className="w-full max-w-2xl min-h-52 rounded-md border-2 border-zinc-600 p-2 outline-none lg:max-w-4xl"
+          className="w-full max-w-2xl min-h-52 rounded-md border-2 border-zinc-700 shadow-md shadow-zinc-700 placeholder:text-zinc-600 p-2 outline-none lg:max-w-4xl"
         ></textarea>
       </label>
 
