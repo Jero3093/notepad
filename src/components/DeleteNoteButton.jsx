@@ -42,7 +42,7 @@ function DeleteNoteButton({ noteId }) {
 
   return (
     <button
-      className="p-2 px-5 rounded-md border-2 border-red-500 text-red-500 bg-transparent"
+      className="p-2 rounded-md border-2 border-red-500 text-red-500 bg-transparent md:px-5"
       title="Borrar Nota"
       onClick={() => showAlert()}
     >

@@ -1,5 +1,6 @@
 import EditNoteButton from "./EditNoteButton";
 import DeleteNoteButton from "./DeleteNoteButton";
+import ExportNoteButton from "./ExportNoteButton";
 
 const NoteView = ({ id, title, content, created_at }) => {
   const created_date = created_at && created_at.substring(0, 10);
@@ -14,6 +15,7 @@ const NoteView = ({ id, title, content, created_at }) => {
           </span>
         </aside>
         <aside className="flex flex-row gap-3">
+          <ExportNoteButton title={title} content={content} />
           <EditNoteButton noteId={id} />
           <DeleteNoteButton noteId={id} />
         </aside>
