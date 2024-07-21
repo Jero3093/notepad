@@ -68,6 +68,7 @@ function NewNoteForm({ userId, noteId, noteTitle, noteContent }) {
         .update({
           title: title,
           content: content,
+          last_modified: new Date().toISOString(),
         })
         .eq("id", noteId);
 

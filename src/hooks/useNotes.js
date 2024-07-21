@@ -8,7 +8,7 @@ async function useNotes({ userId }) {
       .from("notes")
       .select("")
       .eq("created_by", userId)
-      .order("created_at", {
+      .order("last_modified", {
         ascending: false,
       });
 
