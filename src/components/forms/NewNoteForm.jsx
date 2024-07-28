@@ -94,28 +94,24 @@ function NewNoteForm({ userId, noteId, noteTitle, noteContent }) {
       className="flex flex-col gap-6 w-full h-full"
       onSubmit={(e) => (noteId ? handleEditNote(e) : handleCreateNote(e))}
     >
-      <label htmlFor="title" className="text-2xl flex flex-col gap-4">
-        Titulo:
+      <section className="w-full">
         <Input
           type="text"
           name="title"
           placeholder="Titulo de la Nota"
           value={title}
           onChange={(t) => setTitle(t.target.value)}
-          className="w-full max-w-2xl h-14 rounded-md border-2 border-zinc-700 shadow-md shadow-zinc-700 placeholder:text-zinc-600 p-2 outline-none lg:max-w-4xl"
+          className="w-full h-16 rounded-t-md rounded-b-none NotesInputShadow placeholder:text-zinc-500 text-xl p-2 outline-none"
         />
-      </label>
 
-      <label htmlFor="content" className="text-2xl flex flex-col gap-4">
-        Contenido:
         <textarea
           name="content"
           placeholder="Contenido de la Nota"
           value={content}
           onChange={(t) => setContent(t.target.value)}
-          className="w-full max-w-2xl min-h-52 rounded-md border-2 border-zinc-700 shadow-md shadow-zinc-700 placeholder:text-zinc-600 p-2 outline-none lg:max-w-4xl"
+          className="w-full min-h-96 rounded-b-md rounded-t-none NotesInputShadow placeholder:text-zinc-500 text-xl p-2 outline-none"
         ></textarea>
-      </label>
+      </section>
 
       {isLoading ? (
         <div className="max-w-96 grid place-items-center">
