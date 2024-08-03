@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
-import { Toaster } from "sonner";
+import { IoMdHelp } from "react-icons/io";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Nav from "@/components/Nav";
 import SettingsHeader from "@/components/settings/SettingsHeader";
@@ -21,7 +22,6 @@ export default async function Settings() {
 
   return (
     <main className="flex flex-col h-screen">
-      <Toaster richColors position="top-center" />
       <Header />
 
       <section className="h-full flex flex-col lg:flex-row">
@@ -32,6 +32,16 @@ export default async function Settings() {
           <ul className="flex flex-col gap-5 items-center">
             <li>
               <UserSettingsButton userId={user[0]?.id} />
+            </li>
+            <li>
+              <Link
+                href={`/settings/help`}
+                className="w-96 h-12 rounded-md flex flex-row justify-between items-center py-6 px-4 bg-transparent border-[3px] text-lg border-sky-500 text-sky-500"
+                title="Ayuda"
+              >
+                Ayuda
+                <IoMdHelp className="w-5 h-5" />
+              </Link>
             </li>
             <li>
               <LogOutButton />

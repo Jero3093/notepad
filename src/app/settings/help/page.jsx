@@ -1,9 +1,9 @@
 import { redirect } from "next/navigation";
-import { Toaster } from "sonner";
 import Header from "@/components/Header";
 import Nav from "@/components/Nav";
 import NewNoteButton from "@/components/NewNoteButton";
 import useSession from "@/hooks/useSession";
+import useUser from "@/hooks/useUser";
 import useNotes from "@/hooks/useNotes";
 import { HelpInstructions } from "@/constants/Help";
 
@@ -18,13 +18,12 @@ export default async function Help() {
 
   return (
     <main className="flex flex-col h-screen">
-      <Toaster richColors position="top-center" />
       <Header />
 
       <section className="h-full flex flex-col lg:flex-row">
         <Nav notes={notes} />
 
-        <aside className="flex flex-col gap-10 text-pretty w-full h-full p-4 overflow-auto pb-20">
+        <aside className="flex flex-col gap-10 text-pretty w-full h-full p-4 overflow-auto">
           <header className="flex flex-col gap-5">
             <h2 className="text-2xl font-medium">
               Nombre de la Aplicación: {HelpInstructions?.applicationName}
@@ -34,7 +33,7 @@ export default async function Help() {
             </h3>
           </header>
 
-          <section className="flex flex-col gap-5">
+          <section className="flex flex-col gap-5 pb-20">
             <h4 className="text-2xl font-semibold">Instrucciones</h4>
             {HelpInstructions?.instructions.map(
               ({ step, title, description }) => {
