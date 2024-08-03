@@ -24,9 +24,10 @@ function LogOutButton() {
         if (supabaseError) return console.log(error.message);
 
         toast.success("Sesión cerrada correctamente");
+
         setTimeout(() => {
           router.replace("/auth/signin");
-        }, 3000);
+        }, 4000);
       }
     } catch (error) {
       console.log(error.message);

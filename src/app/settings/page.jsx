@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { Toaster } from "sonner";
 import { IoMdHelp } from "react-icons/io";
 import Link from "next/link";
 import Header from "@/components/Header";
@@ -22,6 +23,7 @@ export default async function Settings() {
 
   return (
     <main className="flex flex-col h-screen">
+      <Toaster richColors position="top-center" />
       <Header />
 
       <section className="h-full flex flex-col lg:flex-row">
