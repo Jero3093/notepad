@@ -21,6 +21,8 @@ export default async function Note({ params }) {
 
   const note = notes.length > 0 && notes.find((n) => n?.id === noteId);
 
+  if (user[0]?.id || note?.id) redirect("/");
+
   return (
     <main className="flex flex-col h-screen">
       <Toaster position="top-center" richColors />
