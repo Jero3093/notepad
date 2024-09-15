@@ -1,14 +1,16 @@
-async function saveSession({ session }) {
-  const res = await fetch("/api/auth/cookies/", {
+import sessionSchema from "./sessionSchema";
+
+async function saveSession({ session, restoreSession }) {
+  const schema = sessionSchema({ session: session, oAuth: false });
+
+  const url = process.env.COOKIES_URL;
+
+  const res = await fetch(restoreSession ? url : "/api/auth/cookies/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      access_token: session?.access_token,
-      refresh_token: session?.refresh_token,
-      email: session?.user?.email,
-    }),
+    body: JSON.stringify(schema),
   });
 
   return res;

@@ -1,5 +1,7 @@
 import { cookies } from "next/headers";
 import supabaseClient from "@/utils/supabase/client";
+import refreshSession from "@/lib/refreshSession";
+import sessionSchema from "@/lib/sessionSchema";
 
 async function useSession() {
   try {
@@ -11,24 +13,14 @@ async function useSession() {
 
     const { data: supabaseSession } = await supabaseClient.auth.getSession();
 
-    if (!supabaseSession.session && parsedSession) {
-      const { data: newSupabaseSession, error } =
-        await supabaseClient.auth.setSession({
-          access_token: parsedSession.access_token,
-          refresh_token: parsedSession.refresh_token,
-        });
+    if (supabaseSession.session === null && parsedSession) {
+      const refreshedSession = refreshSession({
+        refreshToken: parsedSession.refresh_token,
+      });
 
-      if (newSupabaseSession.session) {
-        const formatedNewSupabaseSession = {
-          access_token: newSupabaseSession.session.access_token,
-          refresh_token: newSupabaseSession.session.refresh_token,
-          email: newSupabaseSession.session.user.email,
-        };
+      if (refreshedSession?.error) return null;
 
-        return formatedNewSupabaseSession;
-      } else {
-        console.log(error.message);
-      }
+      return refreshedSession;
     } else if (supabaseSession.session) {
       const supabaseUser = supabaseSession.session.user;
 
@@ -36,25 +28,17 @@ async function useSession() {
         supabaseUser.app_metadata.provider === "twitch" ||
         supabaseUser.app_metadata.provider === "github"
       ) {
-        const oAuthSession = {
-          access_token: supabaseSession.session.access_token,
-          refresh_token: supabaseSession.session.refresh_token,
-          email: supabaseSession.session.user.email,
-          id: supabaseSession.session.user.id,
-          username: supabaseSession.session.user.user_metadata?.user_name,
-          created_at: supabaseUser.created_at,
-        };
+        const oAuthSchema = sessionSchema({
+          session: supabaseSession?.session,
+          oAuth: true,
+        });
 
-        return oAuthSession;
+        return oAuthSchema;
       }
 
-      const formatedSupabaseSession = {
-        access_token: supabaseSession.session.access_token,
-        refresh_token: supabaseSession.session.refresh_token,
-        email: supabaseSession.session.user.email,
-      };
+      const schema = sessionSchema({ session: supabaseSession?.session });
 
-      return formatedSupabaseSession;
+      return schema;
     }
 
     return null;
