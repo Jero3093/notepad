@@ -9,9 +9,17 @@ function Header() {
     if (nav.classList.contains("hidden")) {
       nav.classList.remove("hidden");
       nav.classList.add("flex");
+      if (nav.classList.contains("lg:flex")) {
+        nav.classList.remove("lg:flex");
+        nav.classList.add("lg:hidden");
+      }
     } else {
       nav.classList.remove("flex");
       nav.classList.add("hidden");
+      if (nav.classList.contains("lg:hidden")) {
+        nav.classList.remove("lg:hidden");
+        nav.classList.add("lg:flex");
+      }
     }
   };
 
@@ -23,7 +31,9 @@ function Header() {
         </button>
 
         <Link href={"/"} title="Pagina Principal">
-          <h1 className="text-3xl text-sky-600 font-semibold dark:text-sky-400">Notepad</h1>
+          <h1 className="text-3xl text-sky-600 font-semibold dark:text-sky-400">
+            Notepad
+          </h1>
         </Link>
 
         <Link href={"/settings"} title="Ajustes">
