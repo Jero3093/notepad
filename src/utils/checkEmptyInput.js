@@ -32,4 +32,19 @@ function checkNewNoteInputs({ title, content }) {
   }
 }
 
-export { checkSignUpInputs, checkLogInInputs, checkNewNoteInputs };
+function checkUserSettingsInputs({ username }) {
+  const checkUsername = username.length > 0 ? false : true;
+
+  if (checkUsername) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export {
+  checkSignUpInputs,
+  checkLogInInputs,
+  checkNewNoteInputs,
+  checkUserSettingsInputs,
+};
