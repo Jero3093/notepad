@@ -6,7 +6,7 @@ import useNotes from "@/hooks/useNotes";
 import Header from "@/components/Header";
 import Nav from "@/components/Nav";
 import NewNoteButton from "@/components/NewNoteButton";
-import NoteView from "@/components/NoteView";
+import NoteView from "@/components/note/NoteView";
 
 export default async function Note({ params }) {
   const session = await useSession();
