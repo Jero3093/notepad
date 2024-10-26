@@ -1,11 +1,13 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import useSession from "@/hooks/useSession";
+import useUser from "@/hooks/useUser";
+import useNotes from "@/hooks/useNotes";
+import { Toaster } from "sonner";
 import Header from "@/components/Header";
 import Nav from "@/components/Nav";
 import NewNoteButton from "@/components/NewNoteButton";
-import useUser from "@/hooks/useUser";
-import useNotes from "@/hooks/useNotes";
+import ImportNoteBtn from "@/components/ImportNoteBtn";
 
 export default async function Home() {
   const session = await useSession();
@@ -18,6 +20,7 @@ export default async function Home() {
 
   return (
     <main className="flex flex-col h-screen">
+      <Toaster position="top-center" richColors />
       <Header />
 
       <section className="h-full flex flex-col lg:flex-row">
@@ -41,6 +44,7 @@ export default async function Home() {
             >
               Agregar Nota
             </Link>
+            <ImportNoteBtn userId={user[0]?.id} />
           </section>
         </aside>
       </section>
