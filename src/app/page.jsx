@@ -48,7 +48,7 @@ export default async function Home() {
           </section>
         </aside>
       </section>
-      <NewNoteButton />
+      <NewNoteButton userId={user[0]?.id} />
     </main>
   );
 }

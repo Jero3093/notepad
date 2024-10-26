@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { MdDriveFolderUpload } from "react-icons/md";
 import supabaseClient from "@/utils/supabase/client";
 
-function ImportNoteBtn({ userId }) {
+function ImportNoteBtn({ userId, forBottomBtns }) {
   const [file, setFile] = useState(null);
 
   const router = useRouter();
@@ -46,7 +47,11 @@ function ImportNoteBtn({ userId }) {
   return (
     <button
       title="Importar nota desde el dispositivo"
-      className="p-2 px-7 bg-sky-500 text-black rounded-md text-lg font-medium"
+      className={
+        forBottomBtns
+          ? "grid place-items-center w-14 h-14 bg-sky-700 dark:bg-sky-400 z-10"
+          : "p-2 px-7 bg-sky-500 text-black rounded-md text-lg font-medium"
+      }
       onClick={() => document.getElementById("file").click()}
     >
       <input
@@ -57,7 +62,11 @@ function ImportNoteBtn({ userId }) {
         onChange={(e) => setFile(e.target.files[0])}
         hidden
       />
-      Importar Nota
+      {forBottomBtns ? (
+        <MdDriveFolderUpload className="w-8 h-8 text-black" />
+      ) : (
+        "Importar Nota"
+      )}
     </button>
   );
 }
