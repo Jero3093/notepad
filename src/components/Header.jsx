@@ -25,7 +25,7 @@ function Header() {
 
   return (
     <>
-      <header className="flex flex-row items-center justify-between p-4 border-b border-zinc-300 dark:border-zinc-800">
+      <header className="flex flex-row items-center justify-between p-4">
         <button onClick={() => handleShowNav()} title="Menu">
           <IoMenuOutline className="w-10 h-10 text-zinc-700 dark:text-zinc-200" />
         </button>

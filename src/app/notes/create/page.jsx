@@ -23,7 +23,7 @@ export default async function CreateNote() {
       <section className="h-full flex flex-col lg:flex-row">
         <Nav notes={notes} />
 
-        <aside className="p-4 flex flex-col items-start gap-6 text-pretty w-full h-full">
+        <aside className="p-4 flex flex-col items-start gap-6 text-pretty w-full h-full border-t-2 border-zinc-300 dark:border-zinc-800">
           <h1 className="text-sky-500 dark:text-sky-300 text-3xl font-semibold">
             Nueva Nota
           </h1>

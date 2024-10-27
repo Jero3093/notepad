@@ -46,7 +46,7 @@ function Nav({ notes }) {
 
   return (
     <nav
-      className="hidden flex-col gap-3 p-4 border-b border-zinc-300 dark:border-zinc-800 w-full min-h-60 max-h-60 lg:max-h-full lg:h-full lg:max-w-80 lg:min-w-80 lg:border-b-0 lg:border-r-2 lg:flex overflow-y-auto"
+      className="hidden flex-col gap-3 p-4 border-zinc-300 dark:border-zinc-800 w-full min-h-60 max-h-60 lg:max-h-full lg:h-full lg:max-w-80 lg:min-w-80 lg:border-r-2 lg:flex overflow-y-auto"
       id="nav"
     >
       <h2 className="text-2xl text-zinc-700 dark:text-zinc-200 font-medium">

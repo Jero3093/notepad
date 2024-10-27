@@ -23,7 +23,7 @@ export default async function Help() {
       <section className="h-full flex flex-col lg:flex-row">
         <Nav notes={notes} />
 
-        <aside className="flex flex-col gap-10 text-pretty w-full h-full p-4 overflow-auto">
+        <aside className="flex flex-col gap-10 text-pretty w-full h-full p-4 overflow-auto border-t-2 border-zinc-300 dark:border-zinc-800">
           <header className="flex flex-col gap-5">
             <h2 className="text-2xl font-medium">
               Nombre de la Aplicación: {HelpInstructions?.applicationName}

@@ -26,7 +26,7 @@ export default async function Home() {
       <section className="h-full flex flex-col lg:flex-row">
         <Nav notes={notes} />
 
-        <aside className="p-4 grid place-items-center text-pretty w-full h-full">
+        <aside className="p-4 grid place-items-center text-pretty w-full h-full border-t-2 border-zinc-300 dark:border-zinc-800">
           <section className="flex flex-col items-center gap-6">
             <h1 className="text-3xl font-bold md:text-5xl">
               Bienvenido a Notepad

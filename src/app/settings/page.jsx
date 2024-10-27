@@ -29,7 +29,7 @@ export default async function Settings() {
       <section className="h-full flex flex-col lg:flex-row">
         <Nav notes={notes} />
 
-        <aside className="flex flex-col items-center justify-center gap-10 text-pretty w-full h-full md:p-4">
+        <aside className="flex flex-col items-center justify-center gap-10 text-pretty w-full h-full md:p-4 border-t-2 border-zinc-300 dark:border-zinc-800">
           <SettingsHeader user={user} />
           <ul className="flex flex-col gap-5 items-center">
             <li>

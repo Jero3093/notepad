@@ -28,7 +28,7 @@ export default async function UserSettings({ searchParams }) {
       <section className="h-full flex flex-col lg:flex-row">
         <Nav notes={notes} />
 
-        <aside className="flex flex-col gap-10 text-pretty w-full h-full p-4 overflow-auto pb-20">
+        <aside className="flex flex-col gap-10 text-pretty w-full h-full p-4 overflow-auto pb-20 border-t-2 border-zinc-300 dark:border-zinc-800">
           <BackButton route={"/settings"} />
           <header className="flex gap-6 flex-col">
             <h2 className="text-sky-500 dark:text-sky-300 text-3xl font-semibold">
