@@ -11,7 +11,7 @@ import Loader from "../Loader";
 function UserSettingsForm({ user }) {
   const [isLoading, setIsLoading] = useState(false);
 
-  const [username, setUsername] = useState(user[0]?.username);
+  const [username, setUsername] = useState(user?.username);
 
   const router = useRouter();
 
@@ -37,7 +37,7 @@ function UserSettingsForm({ user }) {
       if (checkFields)
         return toast.warning("No puedes dejar ningun campo vacío.");
 
-      if (user[0]?.username === username)
+      if (user?.username === username)
         return toast.error(
           "Para guardar los cambios debes modificar los valores de los campos."
         );
@@ -47,7 +47,7 @@ function UserSettingsForm({ user }) {
         .update({
           username: username,
         })
-        .eq("id", user[0]?.id);
+        .eq("id", user?.id);
 
       if (dbError) return toast.error("Ocurrio un error, vuelva a intentar.");
 

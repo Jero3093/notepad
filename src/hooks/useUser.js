@@ -18,20 +18,15 @@ async function useUser({ session }) {
     const email = session?.email;
 
     if (email) {
-      const { data, error } = await supabaseClient
-        .from("users")
-        .select("")
-        .eq("email", email);
+      const { data, error } = await supabaseClient.from("users").select("*");
 
-      if (data) {
-        return data;
-      } else {
-        console.log(error.message);
-        return null;
-      }
+      if (error || !data) return null;
+
+      const user = data.find((u) => u?.email === email);
+      return user || null;
     }
   } catch (error) {
-    console.log(error.message);
+    return null;
   }
 }
 

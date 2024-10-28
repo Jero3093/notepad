@@ -19,7 +19,7 @@ export default async function Settings() {
 
   const user = await useUser({ session });
 
-  const notes = await useNotes({ userId: user[0]?.id });
+  const notes = await useNotes({ userId: user?.id });
 
   return (
     <main className="flex flex-col h-screen">
@@ -33,7 +33,7 @@ export default async function Settings() {
           <SettingsHeader user={user} />
           <ul className="flex flex-col gap-5 items-center">
             <li>
-              <UserSettingsButton userId={user[0]?.id} />
+              <UserSettingsButton userId={user?.id} />
             </li>
             <li>
               <Link

@@ -14,7 +14,7 @@ export default async function CreateNote() {
 
   const user = await useUser({ session });
 
-  const notes = await useNotes({ userId: user[0]?.id });
+  const notes = await useNotes({ userId: user?.id });
 
   return (
     <main className="flex flex-col h-screen">
@@ -30,7 +30,7 @@ export default async function CreateNote() {
           <p className="text-zinc-500 text-lg">
             Completa todos los campos para crear una nota.
           </p>
-          <NewNoteForm userId={user[0]?.id} />
+          <NewNoteForm userId={user?.id} />
         </aside>
       </section>
     </main>

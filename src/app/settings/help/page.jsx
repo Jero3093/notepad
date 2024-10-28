@@ -14,7 +14,7 @@ export default async function Help() {
 
   const user = await useUser({ session });
 
-  const notes = await useNotes({ userId: user[0]?.id });
+  const notes = await useNotes({ userId: user?.id });
 
   return (
     <main className="flex flex-col h-screen">

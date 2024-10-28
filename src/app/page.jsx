@@ -16,7 +16,7 @@ export default async function Home() {
 
   const user = await useUser({ session });
 
-  const notes = await useNotes({ userId: user[0]?.id });
+  const notes = await useNotes({ userId: user?.id });
 
   return (
     <main className="flex flex-col h-screen">
@@ -44,11 +44,11 @@ export default async function Home() {
             >
               Agregar Nota
             </Link>
-            <ImportNoteBtn userId={user[0]?.id} />
+            <ImportNoteBtn userId={user?.id} />
           </section>
         </aside>
       </section>
-      <NewNoteButton userId={user[0]?.id} />
+      <NewNoteButton userId={user?.id} />
     </main>
   );
 }

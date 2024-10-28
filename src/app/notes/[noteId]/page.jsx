@@ -15,13 +15,13 @@ export default async function Note({ params }) {
 
   const user = await useUser({ session });
 
-  const notes = await useNotes({ userId: user[0]?.id });
+  const notes = await useNotes({ userId: user?.id });
 
   const noteId = params?.noteId;
 
   const note = notes.length > 0 && notes.find((n) => n?.id === noteId);
 
-  if (user[0]?.id !== note?.created_by) redirect("/");
+  if (user?.id !== note?.created_by) redirect("/");
 
   return (
     <main className="flex flex-col h-screen">

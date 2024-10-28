@@ -17,7 +17,7 @@ export default async function EditNote({ params }) {
 
   const user = await useUser({ session });
 
-  const notes = await useNotes({ userId: user[0]?.id });
+  const notes = await useNotes({ userId: user?.id });
 
   const note = notes.length > 0 && notes.find((n) => n?.id === noteId);
 
@@ -36,7 +36,7 @@ export default async function EditNote({ params }) {
             Haz los cambios que quieras sin dejar los campos vacíos.
           </p>
           <NewNoteForm
-            userId={user[0]?.id}
+            userId={user?.id}
             noteId={noteId}
             noteTitle={note?.title}
             noteContent={note?.content}
